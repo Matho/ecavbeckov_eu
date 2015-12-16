@@ -1,0 +1,35 @@
+<head>
+  <meta charset='<%= Rails.application.config.encoding %>'/>
+  <title><%= browser_title(yield(:title)) %></title>
+  <!--[if IE]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+  <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
+  <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
+  <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
+  <%= yield :meta %>
+  <%= stylesheet_link_tag "application", "formatting", "theme" %>
+  <%= stylesheet_link_tag "home" if home_page? %>
+  <%= yield :stylesheets %>
+
+  <%= javascript_include_tag 'modernizr-min' %>
+
+
+  <%= favicon_link_tag 'favicon.ico' %>
+
+  <meta name="author" content="Martin Markech - www.matho.sk">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" href="/assets/ie-style.css" type="text/css" media="screen, projection"/>
+  <![endif]-->
+  <!--[if IE 7]>
+  <link rel="stylesheet" href="/assets/ie7-style.css"/>
+  <![endif]-->
+
+  <%= auto_discovery_link_tag(:rss, refinery.news_items_url(:format => 'rss')) %>
+</head>

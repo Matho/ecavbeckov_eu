@@ -1,0 +1,22 @@
+<%
+   # Collect the root items.
+   # ::Refinery::Menu is smart enough to remember all of the items in the original collection.
+   if (roots = local_assigns[:roots] || (collection ||= refinery_menu_pages).roots).present?
+     dom_id ||= 'menu'
+     css = [(css || 'menu clearfix')].flatten.join(' ')
+     ul_css = ul_css ||= ""
+     li_css = li_css ||= ""
+     hide_children = Refinery::Core.menu_hide_children if hide_children.nil?
+-%>
+    <!-- Get Navigation -->
+    <ul class="<%= ul_css if ul_css.present? %>" id="<%= dom_id %>">
+      <%= render :partial => '/refinery/menu_branch', :collection => roots,
+                 :locals => {
+                         :hide_children => hide_children,
+                         :sibling_count => (roots.length - 1),
+                         :menu_levels => local_assigns[:menu_levels],
+                         :apply_css => true, #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
+                         :li_css => li_css
+                 } -%>
+    </ul>
+<% end -%>

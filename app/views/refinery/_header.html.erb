@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="header-wrapper" style="text-align: center;">
+    <!-- Get Logo -->
+    <div style="background-image: url('<%= asset_path 'banners/ecav_beckov_banner_bg.jpg' %>');background-repeat: no-repeat;width:980px;height: 250px;">
+
+      <div class="flexslider" style="float: right;width:470px;margin-top:14px;margin-right:30px;">
+        <ul class="slides">
+          <li>
+            <img src="<%= asset_path "banners/foto_beckov_2.jpg"  %>" height="204" >
+          </li>
+          <li>
+            <img src="<%= asset_path "banners/foto_beckov_1.jpg" %>"  height="204"  >
+          </li>
+          <li>
+            <img src="<%= asset_path "banners/foto_kalnica_1.jpg" %>"  height="204" >
+          </li>
+          <li>
+            <img src="<%= asset_path "banners/foto_kalnica_2.jpg" %>"  height="204" >
+          </li>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <br class="clear">
+    <%= render(:partial => "/refinery/main_navigation") %>
+    <br class="clear">
+
+  </div>
+  <!-- header-wrapper -->

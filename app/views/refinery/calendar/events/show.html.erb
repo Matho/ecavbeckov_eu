@@ -1,0 +1,41 @@
+<% content_for :body_content_right do %>
+    <h1 class="single-thumbnail-title post-title-color gdl-title">
+      <%= @event.title %>
+    </h1>
+
+    <div style="line-height:25px;">
+      <%= image_tag  'icon/dark/map-marker.png', {:style=>"display:inline;vertical-align:middle"} %>
+      <strong><%= @event.venue_name %></strong>
+      <% if @event.venue_address.present? %>
+          (<%= link_to 'zobraziť na mape', "http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=#{CGI::escape(@event.venue.address)}&ie=UTF8&z=16", :target=>'_blank' %>)
+      <% end -%>
+      <br/>
+
+      <%= image_tag  'icon/dark/calendar.png', {:style=>"display:inline;vertical-align:middle"} %>
+      <%= l(@event.start_at, :format => :long)  %>  - <%= l(@event.end_at, :format => :long)  %><br/>
+
+
+      <% if @event.registration_link.present? %>
+          <%= image_tag  'icon/dark/author.png',  {:style=>"display:inline;vertical-align:middle"} %>
+          Registrácia na <%= link_to @event.registration_link, @event.registration_link %>
+      <% end -%>
+    </div>
+    <div>
+      <div class="event_description">
+        <p>
+          <strong><%= @event.excerpt %></strong>
+        </p>
+        <%=raw @event.description %>
+      </div>
+    </div>
+    <div class="clear"></div>
+<% end %>
+
+<%= content_for :body_content_left do %>
+    <div id="eventCalendar"></div>
+    <div id="eventsInfo"></div>
+<% end %>
+
+<% content_for :stylesheets, stylesheet_link_tag('events') %>
+
+<%= render '/refinery/calendar/shared/show_layout' %>

@@ -1,0 +1,11 @@
+<% content_for :body_content_left do %>
+    <div class="gdl-page-item">
+      <div class="sixteen columns wrapper mt0">
+        <%= render @events %>
+      </div>
+    </div>
+<% end %>
+
+<% content_for :stylesheets, stylesheet_link_tag('events') %>
+
+<%= render '/refinery/calendar/shared/events_layout' %>

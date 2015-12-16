@@ -1,0 +1,20 @@
+<div class="content-wrapper sidebar-included right-sidebar">
+  <div class="page-wrapper">
+    <div class="gdl-page-float-left">
+      <%= yield(:body_content_left) %>
+    </div>
+    <div class="five columns mt0 gdl-right-sidebar">
+      <div class="right-sidebar-wrapper gdl-divider" >
+        <%= yield(:body_content_right) %>
+        <div class="pt30"></div>
+      </div>
+    </div>
+
+
+      <%= link_to  image_tag('rss-icon.png', :style=>"vertical-align:middle;display:inline;padding:5px;") + "RSS odber noviniek", '/news.rss' %>
+
+    <br class="clear">
+  </div>
+</div>
+
+

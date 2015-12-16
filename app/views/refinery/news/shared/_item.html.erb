@@ -1,0 +1,26 @@
+<div id="blog-item-holder" class="blog-item-holder">
+  <div class="blog-item2 gdl-divider sixteen columns mt0" id="<%= dom_id(item) %>">
+    <h2 class="blog-thumbnail-title post-title-color gdl-title">
+      <%= link_to item.title, refinery.news_item_path(item) %>
+    </h2>
+
+    <div class="blog-thumbnail-info post-info-color gdl-divider">
+      <div class="blog-thumbnail-date"><%= t('published', :scope => 'refinery.news.items.show') %> <%= l(item.publish_date, :format => :long) %></div>
+      <div class="clear"></div>
+    </div>
+
+
+    <div class="blog-thumbnail-content">
+      <% if news_item_teaser_enabled? %>
+          <%= news_item_teaser(item) %>
+      <% else %>
+          <%= item.body.html_safe %>
+      <% end %>
+    </div>
+
+    <p>
+      <%= link_to t('read_more', :scope => 'refinery.news.shared.items'), refinery.news_item_path(item) if news_item_teaser_enabled? %>
+    </p>
+
+  </div>
+</div>

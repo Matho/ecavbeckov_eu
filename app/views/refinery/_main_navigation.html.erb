@@ -1,0 +1,23 @@
+<% cache "refinery/main_navigation" do %>
+<!-- Navigation and Search Form -->
+<div class="sixteen columns mt0">
+  <div class="navigation-wrapper">
+    <div id="main-superfish-wrapper" class="menu-wrapper">
+      <%= render :partial=> '/refinery/menu', :locals => {
+              :dom_id => 'menu',
+              :css => 'menu',
+              :ul_css => 'sf-menu sf-js-enabled sf-shadow',
+              :li_css => 'menu-item menu-item-type-custom menu-item-object-custom',
+              :hide_children => true
+      } %>
+    </div>
+
+    <!-- Get Search form -->
+    <div class="search-wrapper">
+      <%= render :partial=>'refinery/shared/search' %>
+    </div>
+    <br class="clear">
+  </div>
+</div>
+
+<% end %>

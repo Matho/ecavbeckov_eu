@@ -1,0 +1,18 @@
+<% cache "refinery/submenu/root_id_#{@page.root.id}" do %>
+<div class="five columns mt0 gdl-left-sidebar">
+  <div class="left-sidebar-wrapper gdl-divider">
+    <div class="" style="min-height: 1200px;">
+
+      <%= render :partial => '/refinery/menu',
+                 :locals => {
+                         :dom_id => 'submenu',
+                         :css => 'menu',
+                         :roots => refinery_menu_pages.select{|p| p.parent_id == @page.root.id}
+                 } %>
+
+
+    </div>
+    <div class="pt30"></div>
+  </div>
+</div>
+<% end %>

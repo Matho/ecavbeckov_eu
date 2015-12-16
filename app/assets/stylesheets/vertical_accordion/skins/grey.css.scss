@@ -1,0 +1,42 @@
+#submenu {
+
+}
+
+#submenu, #submenu li {
+
+}
+
+ul, ul li{
+  list-style: none;
+  margin: 0px;
+}
+
+#submenu a {
+  padding: 10px 10px 10px 50px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  position: relative;
+}
+
+
+#submenu a .dcjq-icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 34px;
+  margin-top: -17px;
+  height: 34px;
+  background: image-url('vertical_accordion/skins/images/arrow_grey_right.png') no-repeat 0 center;
+}
+
+#submenu a.dcjq-parent.active .dcjq-icon {
+  background: image-url('vertical_accordion/skins/images/arrow_grey_down.png') no-repeat 0 center;
+}
+
+#submenu li.selected > a:last-child {
+  background-color: #F7F7F7;
+}
+
+

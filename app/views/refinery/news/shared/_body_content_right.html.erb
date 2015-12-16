@@ -1,0 +1,59 @@
+<%= yield(:body_content_right_prepend) %>
+<%= yield(:body_content_right_append) %>
+
+<div class="custom-sidebar gdl-divider">
+  <%= news_item_archive_widget %>
+</div>
+
+<% cache "refinery/upcoming_events" do %>
+    <div class="custom-sidebar gdl-divider">
+      <h3 class="custom-sidebar-title sidebar-title-color gdl-title">Pripravované akcie</h3>
+
+      <div class="gdl-recent-post-widget">
+        <% Refinery::Calendar::Event.upcoming.each do |event| %>
+            <div class="recent-post-widget">
+              <div class="recent-post-widget-title gdl-title">
+                <%= link_to event.title, refinery.calendar_event_path(event)  %><br/>
+              </div>
+              <div class="recent-post-widget-date post-info-color">
+                <%= l(event.start_at, :format => :long) %>
+              </div>
+            </div>
+            <div class="clear"></div>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+
+
+<% cache "refinery/recent_album_page" do %>
+    <div class="custom-sidebar gdl-divider">
+      <h3 class="custom-sidebar-title sidebar-title-color gdl-title">Najnovšie fotogalérie</h3>
+
+      <div class="gdl-recent-post-widget">
+        <% Refinery::AlbumPage.limit(3).order("id DESC").each do |album_page| %>
+            <div class="recent-post-widget">
+              <div class="recent-post-widget-title gdl-title">
+                <%= link_to album_page.page.title, refinery.page_path(album_page.page) %>
+              </div>
+              <div class="recent-post-widget-date post-info-color">
+                <%= l(album_page.page.created_at, :format => :long) %>
+              </div>
+            </div>
+            <div class="clear"></div>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+
+<div style="margin-left:80px;">
+  <a href="http://www.toplist.sk/"><script language="JavaScript" type="text/javascript">
+      <!--
+      document.write('<img src="http://toplist.sk/count.asp?id=1247862&logo=mc&http='+escape(document.referrer)+'&t='+escape(document.title)+
+              '&wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)+'&cd='+escape(window.screen.colorDepth)+'" width="88" height="60" border=0 alt="TOPlist" />');
+      //--></script><noscript><img src="http://toplist.sk/count.asp?id=1247862&logo=mc" border="0"
+                                   alt="TOPlist" width="88" height="60" /></noscript></a>
+</div>
+
+
+

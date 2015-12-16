@@ -1,0 +1,45 @@
+<%= content_for :body_content_left do %>
+    <div class="gdl-page-item">
+      <div class="sixteen columns wrapper mt0">
+        <% if @items.any? %>
+            <% @items.each do |item| %>
+                <div id="blog-item-holder" class="blog-item-holder">
+                  <div class="blog-item2 gdl-divider sixteen columns mt0">
+                    <h2 class="blog-thumbnail-title post-title-color gdl-title">
+                      <%= link_to item.title, refinery.news_item_path(item) %>
+                    </h2>
+                               <!--
+                    <div class="blog-thumbnail-info post-info-color gdl-divider">
+                      <div class="blog-thumbnail-date"><%= t('.published') %> <%= l(item.publish_date, :format => :long) %></div>
+                      <div class="clear"></div>
+                    </div>  -->
+                    <div class="blog-thumbnail-context">
+                      <div class="blog-thumbnail-content">
+                        <%= truncate  item.body, :length => 400,
+                                      :omission => " ...  #{link_to raw('<em>' + t('.read_more') + '→ </em>'), refinery.news_item_path(item)}",
+                                      :preserve_html_tags => true
+                        %>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+            <% end %>
+            <div class="clear"></div>
+            <%= will_paginate @items, :class=>"pagination gdl-divider" %>
+
+        <% else %>
+            <p><em><%= t('.no_items_yet') %></em></p>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+
+<%= content_for :body_content_right do %>
+    <%= render :partial => '/refinery/news/shared/body_content_right' %>
+<% end %>
+
+<%= render :partial=>'/refinery/news/shared/index_layout' %>
+
+
+

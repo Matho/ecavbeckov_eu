@@ -1,0 +1,14 @@
+<% if @page.album.present? %>
+
+    <% cache "refinery/photo_gallery/albums/#{@page.album.id}" do %>
+        <div>
+          <%= raw @page.album.description %>
+        </div>
+    <% end %>
+
+    <div id="photo_gallery">
+      <%= render :partial => "/refinery/photo_gallery/albums/photos" %>
+    </div>
+
+<% end %>
+

@@ -1,0 +1,10 @@
+<div class="custom-sidebar gdl-divider">
+  <h3><%= t('.recent_posts') %></h3>
+  <ul>
+    <% @items.each do |item| %>
+        <li>
+          <%= link_to item.title, refinery.news_item_path(item) %>
+        </li>
+    <% end %>
+  </ul>
+</div>

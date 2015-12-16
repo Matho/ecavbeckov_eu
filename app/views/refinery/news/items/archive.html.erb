@@ -1,0 +1,26 @@
+<% content_for :body_content_left do %>
+    <h1 style="margin-top:20px;"><%= t('.news_item_archive_for', :date => month_translation(@archive_date)) %></h1>
+
+    <div class="gdl-page-item">
+      <div class="sixteen columns wrapper mt0">
+
+        <% if @items.any? %>
+            <%= render :partial => "/refinery/news/shared/item", :collection => @items %>
+
+            <div class="clear"></div>
+            <%= will_paginate @items, :class=>"pagination gdl-divider" %>
+
+        <% else %>
+            <p><%= t('.no_news_articles_posted', :date => month_translation(@archive_date)) %></p>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+
+<%= content_for :body_content_right do %>
+    <%= render :partial => '/refinery/news/shared/body_content_right' %>
+<% end %>
+
+
+<%= render :partial=>'/refinery/news/shared/index_layout' %>
+<% content_for :stylesheets, stylesheet_link_tag('refinery/news/frontend') %>

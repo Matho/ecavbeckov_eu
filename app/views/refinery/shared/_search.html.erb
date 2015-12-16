@@ -1,0 +1,10 @@
+<%= form_tag refinery.search_path, {:id=>'searchform', :method=>'get'} do -%>
+    <div id="search-text">
+      <%= text_field_tag :query, {}, {:type => "text",
+                                      :placeholder =>  'Hľadaný výraz:',
+                                      :value => (params[:query] if params[:query]),
+                                      :id=>'s'} %>
+    </div>
+    <%= submit_tag '', :id=>'searchsubmit' %>
+    <br class="clear">
+<% end %>
